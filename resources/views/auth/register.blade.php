@@ -26,6 +26,15 @@
                 <x-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required />
             </div>
 
+            <!-- Select Register As User -->
+            <div class="mt-4">
+                <x-label for="roleName" :value="__('Register as: ')" />
+                    <select name="roleName" class="border-gray-300 rounded w-full mt-1">
+                        <option value="user">User</option>
+                        <option value="blogger">Blogger</option>
+                    </select>
+            </div>
+
             <!-- Password -->
             <div class="mt-4">
                 <x-label for="password" :value="__('Password')" />

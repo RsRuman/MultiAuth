@@ -10,12 +10,31 @@
                     </a>
                 </div>
 
-                <!-- Navigation Links -->
+                <!-- Navigation Links Dashboard-->
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
                     <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
                         {{ __('Dashboard') }}
                     </x-nav-link>
                 </div>
+
+                <!-- Navigation Links MyProfile-->
+                @if(auth()->user()->hasRole(['blogger', 'user']))
+                <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                    <x-nav-link :href="route('dashboard.profile')" :active="request()->routeIs('dashboard.profile')">
+                        {{ __('My Profile') }}
+                    </x-nav-link>
+                </div>
+                @endif
+
+            <!-- Navigation Links Create Post for Blogger-->
+                @if(auth()->user()->hasRole('blogger'))
+                    <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                        <x-nav-link :href="route('dashboard.createPost')" :active="request()->routeIs('dashboard.createPost')">
+                            {{ __('Create Post') }}
+                        </x-nav-link>
+                    </div>
+                @endif
+
             </div>
 
             <!-- Settings Dropdown -->
